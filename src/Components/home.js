@@ -8,7 +8,7 @@ function HomePage() {
   console.log(user);
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/home")
+      .get("https://concert-booking-five.vercel.app/api/home")
       .then((response) => {
         setEvent(response.data.eventData);
       })
