@@ -9,7 +9,7 @@ function HomePage() {
   console.log(user);
   useEffect(() => {
     axios
-      .get("https://food-ordering-qv4kxm5jo-vivekpadinjarotes-projects.vercel.app/api/home")
+      .get("https://food-ordering-api-three.vercel.app/api/hello")
       .then((response) => {
         setEvent(response.data.eventData);
         setMessage(response.data.message);
