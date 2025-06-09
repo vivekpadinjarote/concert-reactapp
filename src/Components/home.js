@@ -5,14 +5,11 @@ import { useSelector } from "react-redux";
 function HomePage() {
   const [event, setEvent] = useState([]);
   const user = useSelector((store) => store.auth.user);
-  const [message,setMessage] = useState("");
-  console.log(user);
   useEffect(() => {
     axios
-      .get("https://food-ordering-api-three.vercel.app/api/hello")
+      .get("http://localhost:8080/api/home")
       .then((response) => {
         setEvent(response.data.eventData);
-        setMessage(response.data.message);
       })
       .catch((err) => {
         if (err.response.data.message) {
@@ -81,7 +78,6 @@ function HomePage() {
 
       <div className="container mt-5">
         <h3 className="text-danger mb-3">WHAT'S NEW:</h3>
-              <h1>{message}</h1>
         <div className="row row-cols-1 row-cols-md-3">
           {event.map((e, index) => (
             <div className="col mb-4 " key={e._id}>
