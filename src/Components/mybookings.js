@@ -11,9 +11,11 @@ function Mybookings() {
   const [pagination, setPagination] = useState({});
   const [page, setPage] = useState(1);
 
+  const backendUrl = "https://concert-backend-api.vercel.app/"
+
   async function getBookedEvents() {
     await axios
-      .get(`http://localhost:8080/api/mybookings?page=${page}`, {
+      .get(`${backendUrl}api/mybookings?page=${page}`, {
         headers: { Authorization: "Bearer " + user.token },
       })
       .then((response) => {

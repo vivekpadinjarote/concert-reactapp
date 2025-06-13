@@ -10,10 +10,13 @@ function Navbar() {
   var user = useSelector((store) => store.auth.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const backendUrl = "https://concert-backend-api.vercel.app/"
+
   function logout() {
     if (user) {
       axios.post(
-        "http://localhost:8080/api/logout",
+        `${backendUrl}api/logout`,
         {},
         {
           headers: { Authorization: "Bearer " + user.token },

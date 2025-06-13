@@ -23,10 +23,12 @@ function UpdateEvent() {
   const [coverPic, setCoverPic] = useState(null);
   const [fileName, setFileName] = useState(null);
 
+  const backendUrl = "https://concert-backend-api.vercel.app/"
+
   const getEventDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/events/${event_Id}`,
+        `${backendUrl}api/events/${event_Id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -70,7 +72,7 @@ function UpdateEvent() {
       formData.append("coverPic", coverPic);
 
       const response = await axios.put(
-        `http://localhost:8080/api/events/${event._id}`,
+        `${backendUrl}api/events/${event._id}`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -10,10 +10,12 @@ function ConfirmedBooking() {
   const [qr, setQR] = useState();
   const [loading, setLoading] = useState(true);
 
+  const backendUrl = "https://concert-backend-api.vercel.app/"
+
   async function getData(id) {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/confirmedBooking/" + id
+        `${backendUrl}api/confirmedBooking/${id}`
       );
 
       await setBookingData(response.data.bookingData);

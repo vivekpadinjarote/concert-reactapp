@@ -11,6 +11,8 @@ function Signup() {
   const [errormessage, setErrorMessage] = useState([]);
   const navigate = useNavigate();
 
+  const backendUrl = "https://concert-backend-api.vercel.app/"
+
   function signupUser() {
     var user = {
       username: username,
@@ -20,7 +22,7 @@ function Signup() {
     };
 
     axios
-      .post("http://localhost:8080/api/signup", user)
+      .post(`${backendUrl}api/signup`, user)
       .then((response) => {
         setErrorMessage([]);
         navigate("/");

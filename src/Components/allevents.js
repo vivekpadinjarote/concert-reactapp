@@ -16,10 +16,12 @@ function DisplayEvents() {
   const [pageRefresh, setPageRefresh] = useState(false);
   const user = useSelector((store) => store.auth.user);
 
+  const backendUrl = "https://concert-backend-api.vercel.app/"
+
   const fetchConcerts = async (pageNumber = 1) => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/allevents?page=${pageNumber}&limit=3`,
+        `${backendUrl}api/allevents?page=${pageNumber}&limit=3`,
         { headers: { Authorization: "Bearer " + user.token } }
       );
       setConcerts(res.data.concerts);

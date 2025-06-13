@@ -18,12 +18,14 @@ function Details() {
 
   const navigate = useNavigate();
 
+  const backendUrl = "https://concert-backend-api.vercel.app/"
+
   async function getEvent(id) {
     try {
       const token = user?.token || localStorage.getItem("token");
 
       const response = await axios.get(
-        `http://localhost:8080/api/details/${id}`,
+        `${backendUrl}api/details/${id}`,
         {
           headers: { Authorization: "Bearer " + token },
         }
@@ -56,7 +58,7 @@ function Details() {
       ticketsBooked: ticketnumber,
     };
     axios
-      .post(`http://localhost:8080/api/booknow/${id}`, fieldDatas)
+      .post(`${backendUrl}api/booknow/${id}`, fieldDatas)
       .then((response) => {
         const bookingId = response.data.bookingId;
         console.log(response.data.message);

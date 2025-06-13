@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 function RegisterEvent() {
   const user = useSelector((store) => store.auth.user);
+  const backendUrl = "https://concert-backend-api.vercel.app/"
 
   const [concertName, setConcertName] = useState("");
   const [eventId, setEventId] = useState("");
@@ -45,7 +46,7 @@ function RegisterEvent() {
     formData.append("coverPic", coverPic);
 
     axios
-      .post("http://localhost:8080/api/register_event", formData, {
+      .post(`${backendUrl}api/register_event`, formData, {
         headers: { Authorization: "Bearer " + user.token },
         "Content-Type": "multipart/form-data",
       })

@@ -5,9 +5,11 @@ import { useSelector } from "react-redux";
 function HomePage() {
   const [event, setEvent] = useState([]);
   const user = useSelector((store) => store.auth.user);
+
+  const backendUrl = "https://concert-backend-api.vercel.app/"
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/home")
+      .get(`${backendUrl}api/home`)
       .then((response) => {
         setEvent(response.data.eventData);
       })
