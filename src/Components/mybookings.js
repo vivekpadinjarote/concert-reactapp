@@ -35,7 +35,7 @@ function Mybookings() {
     if (!user) {
       alert("Login required");
     } else getBookedEvents();
-  }, [concerts]);
+  }, []);
 
   const displayMargin = { display: "inline-block", marginRight: "3%" };
 
