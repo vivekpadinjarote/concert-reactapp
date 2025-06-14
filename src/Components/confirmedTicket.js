@@ -36,6 +36,10 @@ function ConfirmedBooking() {
     getData(eventId);
   }, [eventId]);
 
+  async function generatePDF(id) {
+    window.open(`${backendUrl}api/pdf/${id}`,`_blank`);
+  }
+
   if (loading) {
     return (
       <div>
@@ -105,6 +109,9 @@ function ConfirmedBooking() {
               style={{ width: "300px", height: "300px" }}
             />
           </div>
+        </div>
+        <div>
+          <a className="btn btn-info" onClick={()=>generatePDF(eventId)}>Download PDF</a>
         </div>
       </div>
     </>

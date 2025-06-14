@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useSearchParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 function HomePage() {
   const [event, setEvent] = useState([]);
-  const user = useSelector((store) => store.auth.user);
 
   const backendUrl = "https://concert-backend-api.vercel.app/"
   useEffect(() => {

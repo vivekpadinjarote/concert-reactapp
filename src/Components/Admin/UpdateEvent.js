@@ -16,7 +16,6 @@ function UpdateEvent() {
   const [concertName, setConcertName] = useState("");
   const [eventId, setEventId] = useState("");
   const [location, setLocation] = useState("");
-  const [date, setDate] = useState("");
   const [eventTime, setEventTime] = useState("");
   const [price, setPrice] = useState("");
   const [ticketsAvailable, setTicketsAvailable] = useState("");

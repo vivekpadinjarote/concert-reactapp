@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import store from "../store/store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -18,9 +17,7 @@ function Navbar() {
       axios.post(
         `${backendUrl}api/logout`,
         {},
-        {
-          headers: { Authorization: "Bearer " + user.token },
-        }
+        {}
       );
       dispatch(removeUser());
       navigate("/login");

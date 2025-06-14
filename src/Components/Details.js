@@ -39,6 +39,7 @@ function Details() {
         alert(err.response.data.message);
       } else {
         alert("Failed to connect to API");
+        console.log(err)
       }
     } finally {
       setLoading(false);
@@ -69,6 +70,7 @@ function Details() {
           alert(err.response.data.message);
         } else {
           alert("Failed to connect to API");
+          console.log(err)
         }
       });
   }
@@ -110,7 +112,7 @@ function Details() {
               ? "data:image/*;base64," + concert.coverPic
               : "/placeholder.jpg"
           }
-          alt="event Image"
+          alt="event"
           className="col-md-12"
         />
         <p className="mt-2" style={{ textAlign: "justify" }}>

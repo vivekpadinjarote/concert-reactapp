@@ -88,7 +88,7 @@ function DisplayEvents() {
                 <img
                   src={`data:image/*;base64,${event.coverPic}`}
                   className="card-img event-img"
-                  alt="Event Image"
+                  alt="Event"
                   style={{
                     height: "100%",
                     width: "100%",
@@ -139,7 +139,7 @@ function DisplayEvents() {
                 >
                   Details
                 </Link>
-                {user?.role == "admin" ? (
+                {user?.role === "admin" ? (
                   <>
                     <Link
                       to={`/update_event/${event._id}`}
