@@ -208,6 +208,7 @@ function UpdateEvent() {
               className="btn btn-primary"
               type="submit"
               onClick={(e) => {
+                e.preventDefault();
                 handleUpdate();
               }}
             >

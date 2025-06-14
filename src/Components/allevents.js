@@ -19,6 +19,7 @@ function DisplayEvents() {
   const backendUrl = "https://concert-backend-api.vercel.app/"
 
   const fetchConcerts = async (pageNumber = 1) => {
+    setLoading(true);
     try {
       const res = await axios.get(
         `${backendUrl}api/allevents?page=${pageNumber}&limit=3`,
@@ -35,12 +36,12 @@ function DisplayEvents() {
 
   const handleDelete = async (id) => {
     await axios
-      .delete("http://localhost:8080/api/events/" + id, {
+      .delete(`${backendUrl}api/events/${id}`, {
         headers: { Authorization: "Bearer " + user.token },
       })
       .then((response) => alert(response.data.message))
       .catch((err) => {
-        alert(err.response.data.message);
+        alert(err);
       });
     setPageRefresh(!pageRefresh);
   };
@@ -193,8 +194,8 @@ function DisplayEvents() {
                   </button>
                 </div>
                 <div className="modal-body">
-                  Are you sure you want to delete{" "}
-                  <strong>{selectedConcertName}</strong>? This action cannot be
+                  Are you sure you want to delete 
+                  <strong> {selectedConcertName}</strong>? This action cannot be
                   undone.
                 </div>
                 <div className="modal-footer">
@@ -208,7 +209,7 @@ function DisplayEvents() {
                   <button
                     type="button"
                     className="btn btn-danger"
-                    onClick={() => handleDelete(selectedEvent)}
+                    onClick={(e) =>{e.preventDefault(); handleDelete(selectedEvent)}}
                     data-dismiss="modal"
                   >
                     Delete
