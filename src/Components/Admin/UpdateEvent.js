@@ -59,7 +59,6 @@ function UpdateEvent() {
 
   const handleUpdate = async () => {
     try {
-      console.log(newDate);
       const formData = new FormData();
       formData.append("concertName", concertName);
       formData.append("eventId", eventId);
@@ -80,7 +79,6 @@ function UpdateEvent() {
       navigate("/allevents");
     } catch (error) {
       alert(error);
-      console.log(error);
     }
   };
 

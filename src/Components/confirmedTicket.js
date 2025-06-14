@@ -19,7 +19,6 @@ function ConfirmedBooking() {
       );
 
       await setBookingData(response.data.bookingData);
-      console.log(response.data.bookingData);
       await setQR(response.data.QRCode);
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {

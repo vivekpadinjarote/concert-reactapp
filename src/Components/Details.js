@@ -39,7 +39,6 @@ function Details() {
         alert(err.response.data.message);
       } else {
         alert("Failed to connect to API");
-        console.log(err)
       }
     } finally {
       setLoading(false);
@@ -70,7 +69,6 @@ function Details() {
           alert(err.response.data.message);
         } else {
           alert("Failed to connect to API");
-          console.log(err)
         }
       });
   }

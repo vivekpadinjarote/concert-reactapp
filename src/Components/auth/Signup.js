@@ -30,7 +30,6 @@ function Signup() {
       .catch((err) => {
         console.error(err);
         if (err.response.data.errors) {
-          console.log(typeof err.response.data.errors);
           setErrorMessage(err.response.data.errors);
         } else if (err.response.data.message) {
           setErrorMessage([err.response.data.message]);
