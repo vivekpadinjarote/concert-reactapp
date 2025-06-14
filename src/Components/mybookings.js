@@ -43,6 +43,9 @@ function Mybookings() {
     } else getBookedEvents();
   }, [page, user]);
 
+
+  const displayMargin = { display: "inline-block", marginRight: "3%" };
+
   if (loading) {
     return (
       <div>
@@ -50,11 +53,7 @@ function Mybookings() {
         <Spinner />
       </div>
     );
-  }
-
-  const displayMargin = { display: "inline-block", marginRight: "3%" };
-
-  if (concerts.length === 0) {
+  }else if (concerts.length === 0) {
     return (
       <>
         <Navbar />
