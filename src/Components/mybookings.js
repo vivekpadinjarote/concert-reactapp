@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
+import Spinner from "./Spinner";
 import checkAuth from "./auth/checkAuth";
 import { Link } from "react-router-dom";
 
@@ -10,32 +11,46 @@ function Mybookings() {
   const user = useSelector((store) => store.auth.user);
   const [pagination, setPagination] = useState({});
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const backendUrl = "https://concert-backend-api.vercel.app/"
 
   async function getBookedEvents() {
-    await axios
-      .get(`${backendUrl}api/mybookings?page=${page}`, {
-        headers: { Authorization: "Bearer " + user.token },
-      })
-      .then((response) => {
-        setConcerts(response.data.events);
-        setPagination(response.data.pagination);
-      })
-      .catch((err) => {
-        if (err.response.data.message) {
-          alert(err.response.data.message);
-        } else {
-          alert("Failed to connect to API");
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `${backendUrl}api/mybookings?page=${page}`,
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
         }
-      });
+      );
+      setConcerts(response.data.events);
+      setPagination(response.data.pagination);
+    } catch (err) {
+      if (err.response?.data?.message) {
+        alert(err.response.data.message);
+      } else {
+        alert("Failed to connect to API");
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
     if (!user) {
       alert("Login required");
     } else getBookedEvents();
-  }, []);
+  }, [page, user]);
+
+  if (loading) {
+    return (
+      <div>
+        <Navbar />
+        <Spinner />
+      </div>
+    );
+  }
 
   const displayMargin = { display: "inline-block", marginRight: "3%" };
 
